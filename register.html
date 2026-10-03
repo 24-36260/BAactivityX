@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Disney Movies Registration Page"
+    >
+
+    <title>Disney Movies - Register</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="register-page">
+
+    <main class="auth-container">
+
+        <section
+            class="auth-card register-card"
+            aria-labelledby="register-title"
+        >
+
+            <header class="form-header">
+
+                <h1 id="register-title">
+                    Disney Movies
+                </h1>
+
+                <p>
+                    Create your movie account
+                </p>
+
+            </header>
+
+
+            <form
+                id="registerForm"
+                action="#"
+                method="post"
+            >
+
+                <!-- Full Name -->
+
+                <div class="form-group">
+
+                    <label for="fullname">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullname"
+                        name="fullname"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Username -->
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Choose a username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
+                <div class="form-group">
+
+                    <label for="confirm-password">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        name="confirm-password"
+                        placeholder="Confirm your password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Terms -->
+
+                <div class="terms">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            name="terms"
+                            required
+                        >
+
+                        <span>
+
+                            I agree to the
+
+                            <a href="#">
+                                Terms and Conditions
+                            </a>
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- Register Button -->
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+                    Register
+                </button>
+
+
+                <!-- Error Message -->
+
+                <p
+                    id="registerMessage"
+                    class="form-message"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+
+            <footer class="form-footer">
+
+                <p>
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================
+         REGISTER CONNECTION
+    =================================================== -->
+
+<script>
+
+    const registerForm =
+        document.getElementById("registerForm");
+
+    const registerMessage =
+        document.getElementById("registerMessage");
+
+
+    registerForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const fullname =
+                document
+                    .getElementById("fullname")
+                    .value
+                    .trim();
+
+
+            const username =
+                document
+                    .getElementById("username")
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const phone =
+                document
+                    .getElementById("phone")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            const confirmPassword =
+                document
+                    .getElementById("confirm-password")
+                    .value;
+
+
+            /* Check passwords */
+
+            if (password !== confirmPassword) {
+
+                registerMessage.textContent =
+                    "Passwords do not match.";
+
+                return;
+
+            }
+
+
+            /* Create account */
+
+            const account = {
+
+                fullname: fullname,
+
+                username: username,
+
+                email: email,
+
+                phone: phone,
+
+                password: password
+
+            };
+
+
+            /* Save account */
+
+            localStorage.setItem(
+                "disneyAccount",
+                JSON.stringify(account)
+            );
+
+
+            /*
+                REGISTER
+                    ↓
+                LOGIN
+            */
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>

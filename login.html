@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Disney Movies Login Page"
+    >
+
+    <title>Disney Movies - Login</title>
+
+    <link rel="stylesheet" href="style1.css">
+
+</head>
+
+
+<body class="login-page">
+
+    <main class="auth-container">
+
+        <section
+            class="auth-card"
+            aria-labelledby="login-title"
+        >
+
+            <header class="form-header">
+
+                <h1 id="login-title">
+                    Disney Movies
+                </h1>
+
+                <p>
+                    Welcome back, movie fan!
+                </p>
+
+            </header>
+
+
+            <form
+                id="loginForm"
+                action="#"
+                method="post"
+            >
+
+                <!-- Username -->
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Remember and Forgot Password -->
+
+                <div class="form-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            name="remember"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <a
+                        href="#"
+                        class="forgot-link"
+                    >
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+                <!-- Login Button -->
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+                    Login
+                </button>
+
+
+                <!-- Error Message -->
+
+                <p
+                    id="loginMessage"
+                    class="form-message"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+
+            <footer class="form-footer">
+
+                <p>
+
+                    Don't have an account?
+
+                    <a href="register.html">
+                        Register
+                    </a>
+
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================
+         LOGIN CONNECTION
+    =================================================== -->
+
+    <script>
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const loginMessage =
+            document.getElementById("loginMessage");
+
+
+        loginForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const username =
+                    document
+                        .getElementById("username")
+                        .value
+                        .trim();
+
+
+                const password =
+                    document
+                        .getElementById("password")
+                        .value;
+
+
+                /*
+                    Get the account created
+                    from register.html.
+                */
+
+                const savedAccount =
+                    localStorage.getItem(
+                        "disneyAccount"
+                    );
+
+
+                if (!savedAccount) {
+
+                    loginMessage.textContent =
+                        "No account found. Please register first.";
+
+                    return;
+
+                }
+
+
+                const account =
+                    JSON.parse(savedAccount);
+
+
+                /*
+                    Check username and password.
+                */
+
+                if (
+                    username === account.username &&
+                    password === account.password
+                ) {
+
+                    localStorage.setItem(
+                        "disneyLoggedIn",
+                        "true"
+                    );
+
+
+                    /*
+                        Activity 1
+                        Login
+                           ↓
+                        Activity 2
+                    */
+
+                    window.location.href =
+                        "../Activity_2/index.html";
+
+                }
+
+                else {
+
+                    loginMessage.textContent =
+                        "Incorrect username or password.";
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
