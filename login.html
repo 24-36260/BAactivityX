@@ -1,260 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Disney Movies Login Page"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disney Movies Login Page">
     <title>Disney Movies - Login</title>
-
     <link rel="stylesheet" href="style1.css">
-
 </head>
-
-
 <body class="login-page">
-
     <main class="auth-container">
-
-        <section
-            class="auth-card"
-            aria-labelledby="login-title"
-        >
-
+        <section class="auth-card" aria-labelledby="login-title">
             <header class="form-header">
-
                 <h1 id="login-title">
                     Disney Movies
                 </h1>
-
                 <p>
                     Welcome back, movie fan!
                 </p>
-
             </header>
 
+            <!-- ==============================
+                 LOGIN FORM
+            =============================== -->
 
-            <form
-                id="loginForm"
-                action="#"
-                method="post"
-            >
-
+            <form id="loginForm" action="#" method="post" novalidate>
                 <!-- Username -->
-
                 <div class="form-group">
-
                     <label for="username">
                         Username
                     </label>
-
                     <input
                         type="text"
                         id="username"
                         name="username"
                         placeholder="Enter your username"
                         autocomplete="username"
-                        required
                     >
-
+                    <span class="field-error" id="usernameError">
+                        required ang username
+                    </span>
                 </div>
 
-
                 <!-- Password -->
-
                 <div class="form-group">
-
                     <label for="password">
                         Password
                     </label>
-
                     <input
                         type="password"
                         id="password"
                         name="password"
                         placeholder="Enter your password"
                         autocomplete="current-password"
-                        required
                     >
-
+                    <span class="field-error" id="passwordError">
+                        required ang password
+                    </span>
                 </div>
 
-
                 <!-- Remember and Forgot Password -->
-
                 <div class="form-options">
-
                     <label class="remember">
-
                         <input
                             type="checkbox"
                             name="remember"
                         >
-
                         <span>
                             Remember me
                         </span>
-
                     </label>
-
-
-                    <a
-                        href="#"
-                        class="forgot-link"
-                    >
+                    <a href="#" class="forgot-link">
                         Forgot password?
                     </a>
-
                 </div>
 
-
                 <!-- Login Button -->
-
-                <button
-                    type="submit"
-                    class="submit-button"
-                >
+                <button type="submit" class="submit-button">
                     Login
                 </button>
 
-
-                <!-- Error Message -->
-
-                <p
-                    id="loginMessage"
-                    class="form-message"
-                    aria-live="polite"
-                ></p>
-
+                <!-- Login Message -->
+                <p id="loginMessage" class="form-message" aria-live="polite"></p>
             </form>
 
-
+            <!-- Footer -->
             <footer class="form-footer">
-
                 <p>
-
                     Don't have an account?
-
                     <a href="register.html">
                         Register
                     </a>
-
                 </p>
-
             </footer>
-
         </section>
-
     </main>
 
-
     <!-- ==================================================
-         LOGIN CONNECTION
+         LOGIN JAVASCRIPT
     =================================================== -->
 
     <script>
+        const loginForm = document.getElementById("loginForm");
+        const loginMessage = document.getElementById("loginMessage");
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+        const usernameError = document.getElementById("usernameError");
+        const passwordError = document.getElementById("passwordError");
 
-        const loginForm =
-            document.getElementById("loginForm");
+        /* =========================================
+           LOGIN SUBMIT
+        ========================================= */
 
-        const loginMessage =
-            document.getElementById("loginMessage");
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
 
+            usernameError.classList.remove("show");
+            passwordError.classList.remove("show");
+            loginMessage.textContent = "";
 
-        loginForm.addEventListener(
-            "submit",
-            function(event) {
+            let hasError = false;
 
-                event.preventDefault();
+            /* CHECK USERNAME */
 
-
-                const username =
-                    document
-                        .getElementById("username")
-                        .value
-                        .trim();
-
-
-                const password =
-                    document
-                        .getElementById("password")
-                        .value;
-
-
-                /*
-                    Get the account created
-                    from register.html.
-                */
-
-                const savedAccount =
-                    localStorage.getItem(
-                        "disneyAccount"
-                    );
-
-
-                if (!savedAccount) {
-
-                    loginMessage.textContent =
-                        "No account found. Please register first.";
-
-                    return;
-
-                }
-
-
-                const account =
-                    JSON.parse(savedAccount);
-
-
-                /*
-                    Check username and password.
-                */
-
-                if (
-                    username === account.username &&
-                    password === account.password
-                ) {
-
-                    localStorage.setItem(
-                        "disneyLoggedIn",
-                        "true"
-                    );
-
-
-                    /*
-                        Activity 1
-                        Login
-                           ↓
-                        Activity 2
-                    */
-
-                    window.location.href =
-                        "../Activity_2/index.html";
-
-                }
-
-                else {
-
-                    loginMessage.textContent =
-                        "Incorrect username or password.";
-
-                }
-
+            if (username.value.trim() === "") {
+                usernameError.textContent = "ang username po ay required :>";
+                usernameError.classList.add("show");
+                hasError = true;
             }
-        );
 
+            /* CHECK PASSWORD */
+
+            if (password.value === "") {
+                passwordError.textContent = "ang password po ay required :>";
+                passwordError.classList.add("show");
+                hasError = true;
+            }
+
+            /* STOP IF EMPTY */
+
+            if (hasError) {
+                return;
+            }
+
+            /* GET REGISTERED ACCOUNT */
+
+            const savedAccount = localStorage.getItem("disneyAccount");
+
+            /* NO ACCOUNT */
+
+            if (!savedAccount) {
+                loginMessage.textContent = "No account found. Please register first.";
+                return;
+            }
+
+            /* READ ACCOUNT */
+
+            const account = JSON.parse(savedAccount);
+
+            /* CHECK USERNAME AND PASSWORD */
+
+            if (
+                username.value.trim() === account.username &&
+                password.value === account.password
+            ) {
+                localStorage.setItem("disneyLoggedIn", "true");
+
+                /* LOGIN → ACTIVITY 2 */
+
+                window.location.href = "../Activity_2/index.html";
+            } else {
+                loginMessage.textContent = "Incorrect username or password.";
+            }
+        });
+
+        /* =========================================
+           REMOVE USERNAME ERROR WHILE TYPING
+        ========================================= */
+
+        username.addEventListener("input", function() {
+            if (username.value.trim() !== "") {
+                usernameError.classList.remove("show");
+            }
+        });
+
+        /* =========================================
+           REMOVE PASSWORD ERROR WHILE TYPING
+        ========================================= */
+
+        password.addEventListener("input", function() {
+            if (password.value !== "") {
+                passwordError.classList.remove("show");
+            }
+        });
     </script>
-
 </body>
-
 </html>
