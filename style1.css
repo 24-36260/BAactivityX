@@ -3,7 +3,6 @@
    RESPONSIVE VERSION
 ===================================================== */
 
-
 /* =====================================================
    1. BASIC SETTINGS
 ===================================================== */
@@ -14,157 +13,106 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
     min-height: 100vh;
-
     font-family: Arial, Helvetica, sans-serif;
-
     color: white;
 }
-
 
 /* =====================================================
    2. LOGIN BACKGROUND
 ===================================================== */
 
 .login-page {
-
     background-image:
-
         linear-gradient(
             rgba(0, 30, 70, 0.30),
             rgba(0, 10, 35, 0.60)
         ),
-
         url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/50bd9909-35b5-4864-8df5-4a18b8157d8b/dhl7c5a-d8a8a7e4-8ae1-4b44-b739-b9aff9c63228.png/v1/fill/w_864,h_534,q_80,strp/disney_tg__catc_cyoa_tg__by_larry899_dhl7c5a-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTM0IiwicGF0aCI6IlwvZlwvNTBiZDk5MDktMzViNS00ODY0LThkZjUtNGExOGI4MTU3ZDhiXC9kaGw3YzVhLWQ4YThhN2U0LThhZTEtNGI0NC1iNzM5LWI5YWZmOWM2MzIyOC5wbmciLCJ3aWR0aCI6Ijw9ODY0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.4cFeVXHu-9Fa1Am5EAMczsbY23XjOEAcYhBxwVjPAVU");
-
     background-size: cover;
-
     background-position: center;
-
     background-repeat: no-repeat;
-
     background-attachment: fixed;
 }
-
 
 /* =====================================================
    3. REGISTER BACKGROUND
 ===================================================== */
 
 .register-page {
-
     background-image:
-
         linear-gradient(
             rgba(10, 25, 60, 0.30),
             rgba(5, 10, 30, 0.70)
         ),
-
         url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/be0be91a-b8ef-47da-9382-a1e44d0b71e9/djilav0-dd6841f7-53ab-4543-9daf-b0ce853f3f9f.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2JlMGJlOTFhLWI4ZWYtNDdkYS05MzgyLWExZTQ0ZDBiNzFlOVwvZGppbGF2MC1kZDY4NDFmNy01M2FiLTQ1NDMtOWRhZi1iMGNlODUzZjNmOWYuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.DqJlZKfIBDNfpwLQ3dJj1d91xKvSJUe7DdLvtEi1BCI");
-
     background-size: cover;
-
     background-position: center;
-
     background-repeat: no-repeat;
-
     background-attachment: fixed;
 }
-
 
 /* =====================================================
    4. MAIN CONTAINER
 ===================================================== */
 
 .auth-container {
-
     min-height: 100vh;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     padding: 30px 20px;
 }
-
 
 /* =====================================================
    5. FORM CARD
 ===================================================== */
 
 .auth-card {
-
     width: 100%;
-
     max-width: 420px;
-
     padding: 35px;
-
     background: rgba(10, 30, 70, 0.38);
-
     border: 1px solid rgba(255, 255, 255, 0.40);
-
     border-radius: 18px;
-
     backdrop-filter: blur(10px);
-
     -webkit-backdrop-filter: blur(10px);
-
     box-shadow:
         0 10px 35px rgba(0, 0, 0, 0.45);
-
     animation: fadeIn 0.6s ease;
 }
-
 
 .register-card {
     max-width: 460px;
 }
-
 
 /* =====================================================
    6. HEADER
 ===================================================== */
 
 .form-header {
-
     text-align: center;
-
     margin-bottom: 28px;
 }
 
-
 .form-header h1 {
-
     font-size: 32px;
-
     font-weight: bold;
-
     letter-spacing: 1px;
-
     margin-bottom: 8px;
-
     text-shadow:
         0 2px 5px rgba(0, 0, 0, 0.60);
 }
 
-
 .form-header p {
-
     font-size: 14px;
-
     color: rgba(255, 255, 255, 0.90);
 }
-
 
 /* =====================================================
    7. FORM
@@ -174,26 +122,18 @@ form {
     width: 100%;
 }
 
-
 .form-group {
     margin-bottom: 18px;
 }
 
-
 .form-group label {
-
     display: block;
-
     margin-bottom: 7px;
-
     font-size: 14px;
-
     font-weight: bold;
-
     text-shadow:
         0 1px 3px rgba(0, 0, 0, 0.60);
 }
-
 
 /* =====================================================
    8. INPUT FIELDS
@@ -203,256 +143,167 @@ form {
 .form-group input[type="email"],
 .form-group input[type="tel"],
 .form-group input[type="password"] {
-
     width: 100%;
-
     padding: 13px 15px;
-
     border: 1px solid rgba(255, 255, 255, 0.45);
-
     border-radius: 10px;
-
     background: rgba(255, 255, 255, 0.15);
-
     color: white;
-
     font-size: 14px;
-
     outline: none;
-
     transition:
         background 0.2s ease,
         border 0.2s ease,
         box-shadow 0.2s ease;
 }
 
-
 .form-group input::placeholder {
-
     color: rgba(255, 255, 255, 0.75);
 }
 
-
 .form-group input:hover {
-
     background: rgba(255, 255, 255, 0.20);
 }
 
-
 .form-group input:focus {
-
     background: rgba(255, 255, 255, 0.23);
-
     border-color: white;
-
     box-shadow:
         0 0 0 3px rgba(255, 255, 255, 0.15);
 }
-
 
 /* =====================================================
    9. LOGIN OPTIONS
 ===================================================== */
 
 .form-options {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     gap: 10px;
-
     margin: 5px 0 20px;
-
     font-size: 12px;
 }
 
-
 .remember {
-
     display: flex;
-
     align-items: center;
-
     gap: 6px;
-
     cursor: pointer;
 }
-
 
 .remember input {
-
     width: 14px;
-
     height: 14px;
-
     cursor: pointer;
 }
 
-
 .forgot-link {
-
     color: white;
-
     text-decoration: none;
 }
-
 
 .forgot-link:hover {
     text-decoration: underline;
 }
-
 
 /* =====================================================
    10. TERMS AND CONDITIONS
 ===================================================== */
 
 .terms {
-
     margin: 5px 0 20px;
-
     font-size: 12px;
-
     line-height: 1.5;
 }
 
-
 .terms label {
-
     display: flex;
-
     align-items: flex-start;
-
     gap: 8px;
-
     cursor: pointer;
 }
-
 
 .terms input {
-
     width: 14px;
-
     height: 14px;
-
     margin-top: 2px;
-
     flex-shrink: 0;
-
     cursor: pointer;
 }
 
-
 .terms a {
-
     color: white;
-
     font-weight: bold;
 }
-
 
 .terms a:hover {
     text-decoration: none;
 }
-
 
 /* =====================================================
    11. BUTTON
 ===================================================== */
 
 .submit-button {
-
     width: 100%;
-
     padding: 13px 20px;
-
     border: none;
-
     border-radius: 10px;
-
     background: white;
-
     color: #14345c;
-
     font-size: 15px;
-
     font-weight: bold;
-
     cursor: pointer;
-
     transition:
         transform 0.2s ease,
         background 0.2s ease,
         box-shadow 0.2s ease;
 }
 
-
 .submit-button:hover {
-
     background: #e9f3ff;
-
     transform: translateY(-2px);
-
     box-shadow:
         0 5px 18px rgba(0, 0, 0, 0.30);
 }
 
-
 .submit-button:active {
     transform: translateY(0);
 }
-
 
 /* =====================================================
    12. FORM MESSAGE
 ===================================================== */
 
 .form-message {
-
     min-height: 18px;
-
     margin-top: 10px;
-
     color: #ffffff;
-
     text-align: center;
-
     font-size: 12px;
-
     font-weight: bold;
 }
-
 
 /* =====================================================
    13. FOOTER
 ===================================================== */
 
 .form-footer {
-
     text-align: center;
-
     margin-top: 22px;
-
     font-size: 13px;
 }
 
-
 .form-footer a {
-
     color: white;
-
     font-weight: bold;
-
     text-decoration: underline;
 }
-
 
 .form-footer a:hover {
     text-decoration: none;
 }
-
 
 /* =====================================================
    14. ACCESSIBILITY
@@ -461,188 +312,144 @@ form {
 a:focus,
 button:focus,
 input:focus {
-
     outline: 2px solid white;
-
     outline-offset: 2px;
 }
-
 
 /* =====================================================
    15. FADE ANIMATION
 ===================================================== */
 
 @keyframes fadeIn {
-
     from {
-
         opacity: 0;
-
         transform: translateY(12px);
     }
-
     to {
-
         opacity: 1;
-
         transform: translateY(0);
     }
 }
-
 
 /* =====================================================
    16. TABLET RESPONSIVE
 ===================================================== */
 
 @media (max-width: 768px) {
-
     .auth-container {
-
         padding: 25px 18px;
     }
 
-
     .auth-card {
-
         max-width: 430px;
-
         padding: 30px 25px;
     }
 
-
     .form-header h1 {
-
         font-size: 28px;
     }
-
 }
-
 
 /* =====================================================
    17. MOBILE RESPONSIVE
 ===================================================== */
 
 @media (max-width: 480px) {
-
     .login-page,
     .register-page {
-
         background-attachment: scroll;
-
         background-position: center;
     }
 
-
     .auth-container {
-
         min-height: 100vh;
-
         padding: 20px 15px;
     }
 
-
     .auth-card {
-
         width: 100%;
-
         padding: 25px 20px;
-
         border-radius: 15px;
     }
 
-
     .form-header {
-
         margin-bottom: 20px;
     }
 
-
     .form-header h1 {
-
         font-size: 25px;
     }
 
-
     .form-header p {
-
         font-size: 13px;
     }
 
-
     .form-group {
-
         margin-bottom: 15px;
     }
 
-
     .form-group label {
-
         font-size: 13px;
     }
-
 
     .form-group input[type="text"],
     .form-group input[type="email"],
     .form-group input[type="tel"],
     .form-group input[type="password"] {
-
         padding: 12px;
-
         font-size: 13px;
     }
 
-
     .form-options {
-
         font-size: 11px;
     }
 
-
     .submit-button {
-
         padding: 12px;
-
         font-size: 14px;
     }
 
-
     .form-footer {
-
         font-size: 12px;
     }
-
 }
-
 
 /* =====================================================
    18. SMALL PHONE
 ===================================================== */
 
 @media (max-width: 350px) {
-
     .auth-container {
-
         padding: 15px 10px;
     }
 
-
     .auth-card {
-
         padding: 22px 15px;
     }
 
-
     .form-header h1 {
-
         font-size: 23px;
     }
 
-
     .form-options {
-
         flex-direction: column;
-
         align-items: flex-start;
     }
+}
 
+/* =====================================================
+   19. CUSTOM VALIDATION NOTIFICATIONS
+===================================================== */
+
+.field-error {
+    display: none;
+    color: #ff4d4d;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5px;
+    line-height: 1.3;
+}
+
+.field-error.show {
+    display: block;
 }
