@@ -1,354 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Disney Movies Registration Page"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disney Movies Registration Page">
     <title>Disney Movies - Register</title>
-
     <link rel="stylesheet" href="style1.css">
-
 </head>
-
-
 <body class="register-page">
-
     <main class="auth-container">
-
-        <section
-            class="auth-card register-card"
-            aria-labelledby="register-title"
-        >
-
+        <section class="auth-card register-card" aria-labelledby="register-title">
             <header class="form-header">
-
                 <h1 id="register-title">
                     Disney Movies
                 </h1>
-
                 <p>
                     Create your movie account
                 </p>
-
             </header>
-
-
-            <form
-                id="registerForm"
-                action="#"
-                method="post"
-            >
-
+            <!-- ==============================
+                 REGISTER FORM
+            =============================== -->
+            <form id="registerForm" action="#" method="post" novalidate>
                 <!-- Full Name -->
-
                 <div class="form-group">
-
                     <label for="fullname">
                         Full Name
                     </label>
-
                     <input
                         type="text"
                         id="fullname"
                         name="fullname"
                         placeholder="Enter your full name"
                         autocomplete="name"
-                        required
+                        oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')"
                     >
-
+                    <span class="field-error" id="fullnameError">
+                        ang full name po ay required :>
+                    </span>
                 </div>
-
-
                 <!-- Username -->
-
                 <div class="form-group">
-
                     <label for="username">
                         Username
                     </label>
-
                     <input
                         type="text"
                         id="username"
                         name="username"
                         placeholder="Choose a username"
                         autocomplete="username"
-                        required
                     >
-
+                    <span class="field-error" id="usernameError">
+                        ang username po ay required :>
+                    </span>
                 </div>
-
-
                 <!-- Email -->
-
                 <div class="form-group">
-
                     <label for="email">
                         Email Address
                     </label>
-
                     <input
                         type="email"
                         id="email"
                         name="email"
                         placeholder="Enter your email"
                         autocomplete="email"
-                        required
                     >
-
+                    <span class="field-error" id="emailError">
+                        ang email po ay required :>
+                    </span>
                 </div>
-
-
                 <!-- Phone -->
-
                 <div class="form-group">
-
                     <label for="phone">
                         Phone Number
                     </label>
-
                     <input
                         type="tel"
                         id="phone"
                         name="phone"
                         placeholder="Enter your phone number"
                         autocomplete="tel"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                     >
-
+                    <span class="field-error" id="phoneError">
+                        ang phone number po ay required :>
+                    </span>
                 </div>
-
-
                 <!-- Password -->
-
                 <div class="form-group">
-
                     <label for="password">
                         Password
                     </label>
-
                     <input
                         type="password"
                         id="password"
                         name="password"
                         placeholder="Create a password"
                         autocomplete="new-password"
-                        minlength="8"
-                        required
                     >
-
+                    <span class="field-error" id="passwordError">
+                        ang password po ay required :>
+                    </span>
                 </div>
-
-
                 <!-- Confirm Password -->
-
                 <div class="form-group">
-
                     <label for="confirm-password">
                         Confirm Password
                     </label>
-
                     <input
                         type="password"
                         id="confirm-password"
                         name="confirm-password"
                         placeholder="Confirm your password"
                         autocomplete="new-password"
-                        minlength="8"
-                        required
                     >
-
+                    <span class="field-error" id="confirmPasswordError">
+                        pakiconfirm po ang password :>
+                    </span>
                 </div>
-
-
-                <!-- Terms -->
-
+                <!-- Terms and Conditions -->
                 <div class="terms">
-
                     <label>
-
                         <input
                             type="checkbox"
+                            id="terms"
                             name="terms"
-                            required
                         >
-
                         <span>
-
                             I agree to the
-
                             <a href="#">
                                 Terms and Conditions
                             </a>
-
                         </span>
-
                     </label>
-
+                    <span class="field-error" id="termsError">
+                        kailangan pong i-accept ang terms and conditions :>
+                    </span>
                 </div>
-
-
                 <!-- Register Button -->
-
-                <button
-                    type="submit"
-                    class="submit-button"
-                >
+                <button type="submit" class="submit-button">
                     Register
                 </button>
-
-
-                <!-- Error Message -->
-
-                <p
-                    id="registerMessage"
-                    class="form-message"
-                    aria-live="polite"
-                ></p>
-
+                <!-- Register Message -->
+                <p id="registerMessage" class="form-message" aria-live="polite"></p>
             </form>
-
-
+            <!-- Footer -->
             <footer class="form-footer">
-
                 <p>
-
                     Already have an account?
-
                     <a href="login.html">
                         Login
                     </a>
-
                 </p>
-
             </footer>
-
         </section>
-
     </main>
-
-
     <!-- ==================================================
-         REGISTER CONNECTION
+         REGISTER JAVASCRIPT
     =================================================== -->
+    <script>
+        const registerForm = document.getElementById("registerForm");
+        const registerMessage = document.getElementById("registerMessage");
+        const fullname = document.getElementById("fullname");
+        const username = document.getElementById("username");
+        const email = document.getElementById("email");
+        const phone = document.getElementById("phone");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirm-password");
+        const terms = document.getElementById("terms");
+        const fullnameError = document.getElementById("fullnameError");
+        const usernameError = document.getElementById("usernameError");
+        const emailError = document.getElementById("emailError");
+        const phoneError = document.getElementById("phoneError");
+        const passwordError = document.getElementById("passwordError");
+        const confirmPasswordError = document.getElementById("confirmPasswordError");
+        const termsError = document.getElementById("termsError");
 
-<script>
+        /* =========================================
+           REGISTER SUBMIT
+        ========================================= */
 
-    const registerForm =
-        document.getElementById("registerForm");
-
-    const registerMessage =
-        document.getElementById("registerMessage");
-
-
-    registerForm.addEventListener(
-        "submit",
-        function(event) {
-
+        registerForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
+            fullnameError.classList.remove("show");
+            usernameError.classList.remove("show");
+            emailError.classList.remove("show");
+            phoneError.classList.remove("show");
+            passwordError.classList.remove("show");
+            confirmPasswordError.classList.remove("show");
+            termsError.classList.remove("show");
+            registerMessage.textContent = "";
 
-            const fullname =
-                document
-                    .getElementById("fullname")
-                    .value
-                    .trim();
+            let hasError = false;
 
+            /* CHECK FULL NAME */
 
-            const username =
-                document
-                    .getElementById("username")
-                    .value
-                    .trim();
-
-
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim();
-
-
-            const phone =
-                document
-                    .getElementById("phone")
-                    .value
-                    .trim();
-
-
-            const password =
-                document
-                    .getElementById("password")
-                    .value;
-
-
-            const confirmPassword =
-                document
-                    .getElementById("confirm-password")
-                    .value;
-
-
-            /* Check passwords */
-
-            if (password !== confirmPassword) {
-
-                registerMessage.textContent =
-                    "Passwords do not match.";
-
-                return;
-
+            if (fullname.value.trim() === "") {
+                fullnameError.textContent = "ang full name po ay required :>";
+                fullnameError.classList.add("show");
+                hasError = true;
             }
 
+            /* CHECK USERNAME */
 
-            /* Create account */
+            if (username.value.trim() === "") {
+                usernameError.textContent = "ang username po ay required :>";
+                usernameError.classList.add("show");
+                hasError = true;
+            }
+
+            /* CHECK EMAIL */
+
+            if (email.value.trim() === "") {
+                emailError.textContent = "ang email po ay required :>";
+                emailError.classList.add("show");
+                hasError = true;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+                emailError.textContent = "please enter a valid email :>";
+                emailError.classList.add("show");
+                hasError = true;
+            }
+
+            /* CHECK PHONE */
+
+            if (phone.value.trim() === "") {
+                phoneError.textContent = "ang phone number po ay required :>";
+                phoneError.classList.add("show");
+                hasError = true;
+            }
+
+            /* CHECK PASSWORD */
+
+            if (password.value === "") {
+                passwordError.textContent = "ang password po ay required :>";
+                passwordError.classList.add("show");
+                hasError = true;
+            } else if (password.value.length < 8) {
+                passwordError.textContent = "ang password po ay dapat at least 8 characters :>";
+                passwordError.classList.add("show");
+                hasError = true;
+            }
+
+            /* CHECK CONFIRM PASSWORD */
+
+            if (confirmPassword.value === "") {
+                confirmPasswordError.textContent = "pakiconfirm po ang password :>";
+                confirmPasswordError.classList.add("show");
+                hasError = true;
+            } else if (password.value !== confirmPassword.value) {
+                confirmPasswordError.textContent = "hindi po match ang password :>";
+                confirmPasswordError.classList.add("show");
+                hasError = true;
+            }
+
+            /* CHECK TERMS */
+
+            if (!terms.checked) {
+                termsError.textContent = "kailangan pong i-accept ang terms and conditions :>";
+                termsError.classList.add("show");
+                hasError = true;
+            }
+
+            /* STOP IF THERE IS AN ERROR */
+
+            if (hasError) {
+                return;
+            }
+
+            /* CREATE ACCOUNT */
 
             const account = {
-
-                fullname: fullname,
-
-                username: username,
-
-                email: email,
-
-                phone: phone,
-
-                password: password
-
+                fullname: fullname.value.trim(),
+                username: username.value.trim(),
+                email: email.value.trim(),
+                phone: phone.value.trim(),
+                password: password.value
             };
 
+            /* SAVE ACCOUNT */
 
-            /* Save account */
+            localStorage.setItem("disneyAccount", JSON.stringify(account));
 
-            localStorage.setItem(
-                "disneyAccount",
-                JSON.stringify(account)
-            );
+            /* REGISTER → LOGIN */
 
+            window.location.href = "login.html";
+        });
 
-            /*
-                REGISTER
-                    ↓
-                LOGIN
-            */
+        /* =========================================
+           REMOVE FULL NAME ERROR WHILE TYPING
+        ========================================= */
 
-            window.location.href =
-                "login.html";
+        fullname.addEventListener("input", function() {
+            if (fullname.value.trim() !== "") {
+                fullnameError.classList.remove("show");
+            }
+        });
 
-        }
-    );
+        /* =========================================
+           REMOVE USERNAME ERROR WHILE TYPING
+        ========================================= */
 
-</script>
+        username.addEventListener("input", function() {
+            if (username.value.trim() !== "") {
+                usernameError.classList.remove("show");
+            }
+        });
+
+        /* =========================================
+           REMOVE EMAIL ERROR WHILE TYPING
+        ========================================= */
+
+        email.addEventListener("input", function() {
+            if (email.value.trim() !== "") {
+                emailError.classList.remove("show");
+            }
+        });
+
+        /* =========================================
+           REMOVE PHONE ERROR WHILE TYPING
+        ========================================= */
+
+        phone.addEventListener("input", function() {
+            if (phone.value.trim() !== "") {
+                phoneError.classList.remove("show");
+            }
+        });
+
+        /* =========================================
+           REMOVE PASSWORD ERROR WHILE TYPING
+        ========================================= */
+
+        password.addEventListener("input", function() {
+            if (password.value !== "") {
+                passwordError.classList.remove("show");
+            }
+        });
+
+        /* =========================================
+           REMOVE CONFIRM PASSWORD ERROR WHILE TYPING
+        ========================================= */
+
+        confirmPassword.addEventListener("input", function() {
+            if (confirmPassword.value !== "") {
+                confirmPasswordError.classList.remove("show");
+            }
+        });
+
+        /* =========================================
+           REMOVE TERMS ERROR WHEN CHECKED
+        ========================================= */
+
+        terms.addEventListener("change", function() {
+            if (terms.checked) {
+                termsError.classList.remove("show");
+            }
+        });
+    </script>
 
 </body>
-
 </html>
